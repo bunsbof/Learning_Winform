@@ -1,0 +1,7 @@
+code Hiếu:
+	code Hiếu dùng buffer là các gói tin chứa loại tin nhắn(type) và dữ liệu(data), các gói tin này có cùng vùng nhớ đc Hiếu viết sẵn nên ưu điểm là  đảm bảo chương trình chạy ổn định không bị đứng chương trình khi truyền tin; nhược điểm là chỉ có thể truyền file thấp hơn hoặc bằng vùng nhớ đã lưu
+
+code của Long:
+	code Long dùng stack Queue nhiều hơn cái hàng đợi này tưởng tượng nó như 1 cái ống nước 2 đầu; 1 đầu đi vào 1 đầu đi ra; nơi này là nơi để lưu tất cả các gói tin được gửi tới; gói nào tới trước thì lúc lấy ra sẽ đc sử lý trc
+	ưu điểm: gói tin của Long từ 1 phía gửi tới ko có giới hạn độ lớn tập tin thích bao nhiêu thì gửi bấy nhiêu
+	nhược điểm: là hàng đợi và th nào tới trc đc xử lý trước, thì nếu mà gói tin gửi tới quá nhiều sẽ có thể dẫn tới trường hợp bị treo máy
