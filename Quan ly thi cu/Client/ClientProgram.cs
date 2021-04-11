@@ -58,7 +58,7 @@ namespace Client
 				_onReceivedExam -= value;
 			}
 		}
-
+		//
 		public void Connect(string hostname, int port)
 		{
 			IP = new IPEndPoint(IPAddress.Parse(hostname), port);

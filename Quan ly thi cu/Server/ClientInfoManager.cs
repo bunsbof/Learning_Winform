@@ -32,9 +32,14 @@ namespace Server
 			try
 			{
 				string s1 = "", s2 = "";
-				int y = 0, x = 0, z = 0, t = 0;
+				int y = 0, x = 0, z = 0, t = 0; // biến dùng để lưu 
+				//x: cho firstIP
+				//y: cho lastIP
+				//z: cho subnetmask
+				//t: chưa hiểu
 				if (firstIP != "")
 				{
+					//giải thích phần này
 					s1 = firstIP.Substring(0, firstIP.LastIndexOf("."));
 					x = int.Parse(firstIP.Substring(firstIP.LastIndexOf(".") + 1));
 				}

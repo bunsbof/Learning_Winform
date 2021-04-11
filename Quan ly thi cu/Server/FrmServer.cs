@@ -112,8 +112,9 @@ namespace Server
             string SubnetMask = frm.SubnetMask;
             int clientNum = frm.ClientNum;
 
-            if (clientNum == 0)
+            if (clientNum == 0)//nếu số lượng client mà bằng 0
             {
+
                 serverProgram.SetClientInfoList(FirstIP, LastIP, SubnetMask);
             }
             else
@@ -130,32 +131,41 @@ namespace Server
 
 		private void btnThemDe_Click(object sender, EventArgs e)
 		{
+            //tạo đối tượng mở explorer
             OpenFileDialog openFile = new OpenFileDialog();
+            //set định dạng mở là tất cả dạng file
             openFile.Filter = "All files (*.*)|*.*";
+            //cho phép chọn nhiều file
             openFile.Multiselect = true;
-
+            //nếu dialog trả về OK(== 1) thì sẽ đóng nó
             if (openFile.ShowDialog() != DialogResult.OK)
                 return;
 
 			foreach (string filename in openFile.FileNames)
 			{
+                //tạo phần tử listview để chứa file đc select
                 ListViewItem row = new ListViewItem();
+                //lấy đường dẫn của file
                 row.Text = Path.GetFileName(filename);
+                //hiển thị tên file
                 row.Tag = filename;
+                //cho vào lsvDeThi để hiển thị
                 lsvDeThi.Items.Add(row);
             }
         }
 
         private void btnXoaDe_Click(object sender, EventArgs e)
         {
+            //nếu đề thi không có phần tử nào thì không có gì xảy ra
             if (lsvDeThi.SelectedItems.Count == 0)
                 return;
-
+            //mặc định sẽ lấy đề thi thứ nhất để xóa
             lsvDeThi.Items.Remove(lsvDeThi.SelectedItems[0]);
         }
 
         private void btnPhatDe_Click(object sender, EventArgs e)
 		{
+            //nếu đề thi không có phần tử nào thì không có gì xảy ra
             if (lsvDeThi.Items.Count == 0)
 			{
                 MessageBox.Show("Vui long chon de thi");
@@ -165,19 +175,20 @@ namespace Server
             List<string> listOfDeThiURL = new List<string>();
             string clientPath = txtClientPath.Text;
             string serverPath = txtServerPath.Text;
-
+            //xử lý hàm thông báo nếu đường dẫn của bài Client không hợp lệ
             if (string.IsNullOrWhiteSpace(clientPath))
 			{
                 MessageBox.Show("Vui long nhap duong dan phat bai thi hop le");
                 return;
 			}
+            //xử lý hàm thông báo nếu đường dẫn của bài Server không hợp lệ
             if (string.IsNullOrWhiteSpace(serverPath))
 			{
                 MessageBox.Show("Vui long nhap duong dan luu bai hop le");
                 return;
 			}
-
-			foreach (ListViewItem row in lsvDeThi.Items)
+            //đưa path của file bài thi hiện vào listOfDeThiURL
+            foreach (ListViewItem row in lsvDeThi.Items)
 			{
                 string deThiURL = row.Tag as string;
                 listOfDeThiURL.Add(deThiURL);
@@ -188,18 +199,22 @@ namespace Server
 
 		private void btnThuBai_Click(object sender, EventArgs e)
 		{
+            //đoạn này được viết kỹ bên ServerProgram
             serverProgram.ThuBai();
 		}
 
 		private void btnChonServerPath_Click(object sender, EventArgs e)
 		{
-            using (var fbd = new FolderBrowserDialog())
-            {
-                DialogResult result = fbd.ShowDialog();
 
+            using (var fbd = new FolderBrowserDialog())// tạo instance của FolderBrowserDialog
+            {
+                DialogResult result = fbd.ShowDialog();// truyền biến fbd vào DialogResult
+                //nếu kết quả trả về Ok và đường dẫn hiển thị không bị trống 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
+                    //thì sẽ truyền đoạn path vào txtServerPath trong FrmServer
                     txtServerPath.Text = fbd.SelectedPath;
+                    //lưu đường dẫn thu bài ở phía Server
                     serverProgram.SetServerPath(fbd.SelectedPath);
                 }
             }
@@ -207,6 +222,7 @@ namespace Server
 
 		private void btnChonClientPath_Click(object sender, EventArgs e)
 		{
+            //y như 
             using (var fbd = new FolderBrowserDialog())
             {
                 DialogResult result = fbd.ShowDialog();

@@ -29,10 +29,11 @@ namespace Server
 
 		public ServerProgram()
 		{
+			//tại sao phải tạo 1 list Socket
 			clientList = new List<Socket>();
 			clientInfoManager = new ClientInfoManager();
 		}
-
+		//chưa hiểu action
 		#region Events
 
 		event Action<List<ClientInfo>> _onClientListChanged;
@@ -268,11 +269,13 @@ namespace Server
 
 		public void SetServerPath(string serverPath)
 		{
+			//lưu đường dẫn thu bài ở phía Server
 			this.serverPath = serverPath;
 		}
 
 		public void PhatDeThi(List<string> danhSachDeThi)
 		{
+			//nếu danh sách đề thi mà không có gì cả thì ngắt kết nối
 			if (danhSachDeThi.Count == 0)
 				return;
 
@@ -313,10 +316,12 @@ namespace Server
 
 		public void ThuBai()
 		{
+			//Gọi DataContainer trong Common định dạng enum thu bài(đc viết sẵn)
 			DataContainer container = new DataContainer(DataContainerType.ThuBai, null);
-
+			//cho nó vào 1 luồng (Socket) với danh sách Client đc tạo ra ở trên
 			foreach (Socket socket in clientList)
 			{
+				//mã hóa dữ liệu thành 01010101 rồi gửi (nhớ là gửi qua luồng Socket)
 				socket.Send(container.Serialize());
 			}
 		}

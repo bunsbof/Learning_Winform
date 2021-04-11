@@ -14,3 +14,19 @@ D:\dev\Socket\New folder\quan-ly-phong-thi\Server\obj\Debug\Server.csproj.CoreCo
 D:\dev\Socket\New folder\quan-ly-phong-thi\Server\obj\Debug\Server.csproj.CopyComplete
 D:\dev\Socket\New folder\quan-ly-phong-thi\Server\obj\Debug\Server.exe
 D:\dev\Socket\New folder\quan-ly-phong-thi\Server\obj\Debug\Server.pdb
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\bin\Debug\Server.exe.config
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\bin\Debug\Server.exe
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\bin\Debug\Server.pdb
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\bin\Debug\Common.dll
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\bin\Debug\Tulpep.NotificationWindow.dll
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\bin\Debug\Common.pdb
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.csprojAssemblyReference.cache
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.Server.resources
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.FrmSetIPRange.resources
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.Properties.Resources.resources
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.UFrmClient.resources
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.csproj.GenerateResource.cache
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.csproj.CopyComplete
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.exe
+D:\dev\LapTrinhMang\Quan ly thi cu\Server\obj\Debug\Server.pdb

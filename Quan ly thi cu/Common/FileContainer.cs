@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Common
+//dùng như 1 cái package đóng gói tập tin để truyền đi
+namespace Common 
 {
 	[Serializable]
     public class FileContainer
