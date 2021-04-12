@@ -278,19 +278,25 @@ namespace Server
 			//nếu danh sách đề thi mà không có gì cả thì ngắt kết nối
 			if (danhSachDeThi.Count == 0)
 				return;
-
+			//tạo danh sách của FileContainer để lưu 
 			List<FileContainer> listOfFiles = new List<FileContainer>();
+			//với mỗi phần tử của danhSachDeThi
 			foreach (string deThiURL in danhSachDeThi)
 			{
+				//sẽ gửi các phần tử của listOfFiles vào danhSachDeThi và lưu ngay trên constructor của FileContainer
 				listOfFiles.Add(new FileContainer(deThiURL, this.clientPath));
 			}
-
+			//tại sao nó lại bằng 1 ???
 			if (danhSachDeThi.Count == 1)
 			{
+				//lấy phần tử đầu tiên của FileContainer
 				FileContainer fileDeThi = listOfFiles[0];
+				//này hiểu nhưng chẳng biết cách viết ra sao, chắc phải lươn
 				foreach (Socket client in clientList)
 				{
+					//lấy file đề thi bỏ vào constructor của DataContainer với định dạng là Phát đề
 					DataContainer container = new DataContainer(DataContainerType.PhatDe, fileDeThi);
+					//mã hóa và gửi cho client
 					client.Send(container.Serialize());
 				}
 			}
@@ -328,14 +334,17 @@ namespace Server
 
 		public void DisconnectAll()
 		{
+			//tạo một luồng Socket
 			foreach (Socket socket in clientList)
 			{
+				//obj ở đây sẽ cho thành null
 				DataContainer response = new DataContainer(DataContainerType.DisconnectAll, null);
+				//mã hóa lại ...
 				socket.Send(response.Serialize());
 			}
-
+			//Xóa danh sách client
 			clientList.Clear();
-
+			//chuyển định dạng của các máy con thành DisconnectAll(được viết kỹ bên ClientInfoManager)
 			clientInfoManager.DisconnectAll();
 		}
 

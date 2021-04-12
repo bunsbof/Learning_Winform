@@ -222,7 +222,7 @@ namespace Server
 
 		private void btnChonClientPath_Click(object sender, EventArgs e)
 		{
-            //y như 
+            //y như btnChonServerPath_Click
             using (var fbd = new FolderBrowserDialog())
             {
                 DialogResult result = fbd.ShowDialog();
