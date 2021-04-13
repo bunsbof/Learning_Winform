@@ -32,6 +32,7 @@ namespace Client
 			clientProgram.OnReceivedExam += HandleOnReceivedExam;
 
             clientProgram.onNhanThongBao = HandleOnNhanThongBao;
+            clientProgram.onNhanDanhSachSVTuExcel = HandleOnNhanDanhSachSVTuExcel;
 
             InitPopupNotifier();
         }
@@ -58,6 +59,35 @@ namespace Client
 
 
         }
+
+        void HandleOnNhanDanhSachSVTuExcel(List<Student> students)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    popup.TitleText = "Thông báo";
+                    popup.ContentText = "Đã nhận danh sách sinh viên từ máy chủ";
+
+                    popup.Popup();
+
+                    cbDSThi.DataSource = students;
+                    cbDSThi.DisplayMember = "FullNameAndId";
+                });
+            }
+            else
+            {
+                popup.TitleText = "Thông báo";
+                popup.ContentText = "Đã nhận danh sách sinh viên từ máy chủ";
+
+                popup.Popup();
+
+                cbDSThi.DataSource = students;
+                cbDSThi.DisplayMember = "FullNameAndId";
+            }
+
+        }
+
         void InitPopupNotifier()
 		{
             popup = new PopupNotifier();

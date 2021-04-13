@@ -38,7 +38,7 @@
             this.btn_SendMessage = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btnFile = new System.Windows.Forms.Button();
             this.btnDisconnectAll = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnChonClientPath = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.groupBox4.Controls.Add(this.btn_SendMessage);
             this.groupBox4.Controls.Add(this.button11);
             this.groupBox4.Controls.Add(this.button10);
-            this.groupBox4.Controls.Add(this.button9);
+            this.groupBox4.Controls.Add(this.btnFile);
             this.groupBox4.Controls.Add(this.btnDisconnectAll);
             this.groupBox4.Location = new System.Drawing.Point(12, 11);
             this.groupBox4.Name = "groupBox4";
@@ -195,18 +195,18 @@
             this.button10.Text = "CSDL";
             this.button10.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btnFile
             // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.Location = new System.Drawing.Point(404, 19);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(115, 41);
-            this.button9.TabIndex = 40;
-            this.button9.Text = "File";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.btnFile.Location = new System.Drawing.Point(404, 19);
+            this.btnFile.Name = "btnFile";
+            this.btnFile.Size = new System.Drawing.Size(115, 41);
+            this.btnFile.TabIndex = 40;
+            this.btnFile.Text = "File";
+            this.btnFile.UseVisualStyleBackColor = true;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
             // 
             // btnDisconnectAll
             // 
@@ -269,7 +269,7 @@
             this.txtClientPath.Name = "txtClientPath";
             this.txtClientPath.Size = new System.Drawing.Size(375, 27);
             this.txtClientPath.TabIndex = 34;
-            this.txtClientPath.Text = "C:\\tam";
+            this.txtClientPath.Text = "D:\\tam";
             // 
             // txtServerPath
             // 
@@ -279,7 +279,7 @@
             this.txtServerPath.Name = "txtServerPath";
             this.txtServerPath.Size = new System.Drawing.Size(375, 27);
             this.txtServerPath.TabIndex = 34;
-            this.txtServerPath.Text = "c:\\serverPath";
+            this.txtServerPath.Text = "D:\\serverPath";
             // 
             // label3
             // 
@@ -430,7 +430,7 @@
         private System.Windows.Forms.Button btn_SendMessage;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnFile;
         private System.Windows.Forms.Button btnDisconnectAll;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnChonClientPath;

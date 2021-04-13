@@ -56,8 +56,8 @@ namespace Server
                 txtClientIP.Text = "No IP";
             //Ở dưới này cx giống vậy
 
-            if (!string.IsNullOrWhiteSpace(client.StudentInfo.ID))
-                txtStudentId.Text = client.StudentInfo.ID;
+            if (!string.IsNullOrWhiteSpace(client.StudentInfo.MSSV))
+                txtStudentId.Text = client.StudentInfo.MSSV;
             else
                 txtStudentId.Text = "N/A";
 
@@ -119,8 +119,8 @@ namespace Server
             if (!string.IsNullOrWhiteSpace(client.PCName))
                 message += client.PCName + Environment.NewLine;
 
-            if (!string.IsNullOrWhiteSpace(client.StudentInfo.ID))
-                message += client.StudentInfo.ID + Environment.NewLine;
+            if (!string.IsNullOrWhiteSpace(client.StudentInfo.MSSV))
+                message += client.StudentInfo.MSSV + Environment.NewLine;
 
             if (!string.IsNullOrWhiteSpace(client.StudentInfo.FullName))
                 message += client.StudentInfo.FullName + Environment.NewLine;

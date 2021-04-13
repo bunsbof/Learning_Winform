@@ -63,3 +63,7 @@ D:\dev\Socket\Quan-ly-thi-cu\Server\obj\Debug\Server.csproj.CopyComplete
 D:\dev\Socket\Quan-ly-thi-cu\Server\obj\Debug\Server.exe
 D:\dev\Socket\Quan-ly-thi-cu\Server\obj\Debug\Server.pdb
 D:\dev\Socket\Quan-ly-thi-cu\Server\obj\Debug\Server.FrmMessage.resources
+D:\dev\Socket\Quan-ly-thi-cu\Server\bin\Debug\EPPlus.dll
+D:\dev\Socket\Quan-ly-thi-cu\Server\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+D:\dev\Socket\Quan-ly-thi-cu\Server\bin\Debug\EPPlus.xml
+D:\dev\Socket\Quan-ly-thi-cu\Server\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

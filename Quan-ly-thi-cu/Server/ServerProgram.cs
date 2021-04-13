@@ -309,7 +309,7 @@ namespace Server
 				//sẽ gửi các phần tử của listOfFiles vào danhSachDeThi và lưu ngay trên constructor của FileContainer
 				listOfFiles.Add(new FileContainer(deThiURL, this.clientPath));
 			}
-			//tại sao nó lại bằng 1 ???
+			//neeus chi cos 1 de
 			if (danhSachDeThi.Count == 1)
 			{
 				//lấy phần tử đầu tiên của FileContainer
@@ -346,7 +346,7 @@ namespace Server
 		public void ThuBai()
 		{
 			//Gọi DataContainer trong Common định dạng enum thu bài(đc viết sẵn)
-			DataContainer container = new DataContainer(DataContainerType.ThuBai, null);
+			DataContainer container = new DataContainer(DataContainerType.ThuBai, null);//tại sao null
 			//cho nó vào 1 luồng (Socket) với danh sách Client đc tạo ra ở trên
 			foreach (Socket socket in clientList)
 			{

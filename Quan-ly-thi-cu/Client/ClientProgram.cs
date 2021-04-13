@@ -21,6 +21,7 @@ namespace Client
 		PopupNotifier popup;
 
 		public Action<string> onNhanThongBao;
+		public Action<List<Student>> onNhanDanhSachSVTuExcel;
 
 		string savePath = null; // Thu muc luu de thi
 
@@ -227,8 +228,12 @@ namespace Client
 
 						case DataContainerType.SendList:
 							break;
-						case DataContainerType.SendStudent:
+						case DataContainerType.GuiDanhSachSV:
+
+							List<Student> students = dataContainer.Data as List<Student>;
+							onNhanDanhSachSVTuExcel(students);
 							break;
+
 						case DataContainerType.GuiThongBaoAll:
 
 							string message = dataContainer.Data.ToString();
