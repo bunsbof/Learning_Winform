@@ -18,14 +18,15 @@ namespace Client
 	{
 		IPEndPoint IP;
 		Socket client;
-		PopupNotifier popup;
+		string serverPath = null; // Đường dẫn lưu trữ bài làm ở phía server
+
 
 		public Action<string> onNhanThongBao;
 		public Action<List<Student>> onNhanDanhSachSVTuExcel;
 
 		string savePath = null; // Thu muc luu de thi
 
-		event Action<string> _onSuccessNotification;
+        event Action<string> _onSuccessNotification;
 		public event Action<string> OnSuccessNotification
 		{
 			add
@@ -63,6 +64,19 @@ namespace Client
 				_onReceivedExam -= value;
 			}
 		}
+
+		public void SendStudent(Student student)
+		{
+			DataContainer container = new DataContainer(DataContainerType.SendStudent, student);
+
+			SendDataToServer(container);
+		}
+
+		public void SetClientPath(string serverPath)
+		{
+			//lưu đường dẫn thu bài ở phía Server
+			this.serverPath = @"D:\serverPath";
+		}
 		//
 		public void Connect(string hostname, int port)
 		{
@@ -96,19 +110,19 @@ namespace Client
 			try
 			{
 				if (container == null)
-					throw new ArgumentException("Dữ liệu trống");
+					throw new ArgumentException("Empty Data");
 
 				client.Send(container.Serialize());
 			}
 			catch (ArgumentException ex)
 			{
 				if (_onErrorNotification != null)
-					_onErrorNotification("Dữ liệu gửi đi không hợp lệ", ex);
+					_onErrorNotification("The submitted data is invalid", ex);
 			}
 			catch (Exception ex)
 			{
 				if (_onErrorNotification != null)
-					_onErrorNotification("Có lỗi xảy ra trong quá trình gửi dữ liệu đến máy chủ", ex);
+					_onErrorNotification("An error occur while trying to sent data to server", ex);
 			}
 		}
 
@@ -117,6 +131,46 @@ namespace Client
 		{
 			if (client != null)
 				client.Close();
+		}
+
+		public void NopBaiThi(List<string> danhSachDeThi)
+		{
+			List<Socket> clientList = new List<Socket>();
+
+			if (danhSachDeThi.Count == 0)
+				return;
+			List<FileContainer> listOfFiles = new List<FileContainer>();
+			foreach (string deThiURL in danhSachDeThi)
+			{
+				listOfFiles.Add(new FileContainer(deThiURL, this.serverPath));
+			}
+			if (danhSachDeThi.Count == 1)
+			{
+				FileContainer fileDeThi = listOfFiles[0];
+				foreach (Socket client in clientList)
+				{
+					DataContainer container = new DataContainer(DataContainerType.NopBai, fileDeThi);
+					client.Send(container.Serialize());
+				}
+			}
+
+			if (danhSachDeThi.Count > 1)
+			{
+				int soLuongDeThi = danhSachDeThi.Count;
+
+				int counter = 0;
+
+				foreach (Socket client in clientList)
+				{
+					DataContainer container = new DataContainer(DataContainerType.PhatDe, listOfFiles[counter]);
+					client.Send(container.Serialize());
+
+					counter++;
+
+					if (counter == soLuongDeThi)
+						counter = 0;
+				}
+			}
 		}
 
 		void Receive()
@@ -276,8 +330,8 @@ namespace Client
 					_onErrorNotification(msg, ex);
 				}
 
-				CloseConnection();
-			}
+                CloseConnection();
+            }
 		}	
 	}
 }

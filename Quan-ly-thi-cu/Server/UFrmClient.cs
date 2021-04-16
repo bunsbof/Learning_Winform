@@ -57,7 +57,10 @@ namespace Server
             //Ở dưới này cx giống vậy
 
             if (!string.IsNullOrWhiteSpace(client.StudentInfo.MSSV))
+            {
+                MessageBox.Show(client.StudentInfo.MSSV);
                 txtStudentId.Text = client.StudentInfo.MSSV;
+            }
             else
                 txtStudentId.Text = "N/A";
 
@@ -65,6 +68,7 @@ namespace Server
                 txtPCName.Text = client.PCName;
             else
                 txtPCName.Text = "N/A";
+
 
             string imageName;//lưu biến chứa hình ảnh để định dạng máy này còn kết nối, mất kết nối, hay bị lỗi
 
@@ -128,6 +132,8 @@ namespace Server
             tltInfo.SetToolTip(pbClient, message);
 		}
 
-		#endregion
-	}
+        #endregion
+
+        
+    }
 }

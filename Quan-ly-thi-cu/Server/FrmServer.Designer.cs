@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lblTimeLeft = new System.Windows.Forms.Label();
             this.btnThuBai = new System.Windows.Forms.Button();
-            this.grbTimeLeft = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.cmdNhapVungIP = new System.Windows.Forms.Button();
             this.cmdKichHoatAllClient = new System.Windows.Forms.Button();
-            this.cmdBatDauLamBai = new System.Windows.Forms.Button();
             this.btn_SendMessage = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.btnFile = new System.Windows.Forms.Button();
             this.btnDisconnectAll = new System.Windows.Forms.Button();
+            this.cmdBatDauLamBai = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnChonClientPath = new System.Windows.Forms.Button();
             this.btnChonServerPath = new System.Windows.Forms.Button();
@@ -55,11 +54,14 @@
             this.btnThemDe = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.flpMain = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSetTime = new System.Windows.Forms.TextBox();
             this.groupBox4.SuspendLayout();
-            this.grbTimeLeft.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -67,68 +69,61 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.btnThuBai);
-            this.groupBox4.Controls.Add(this.grbTimeLeft);
             this.groupBox4.Controls.Add(this.cmdNhapVungIP);
             this.groupBox4.Controls.Add(this.cmdKichHoatAllClient);
-            this.groupBox4.Controls.Add(this.cmdBatDauLamBai);
             this.groupBox4.Controls.Add(this.btn_SendMessage);
             this.groupBox4.Controls.Add(this.button11);
-            this.groupBox4.Controls.Add(this.button10);
             this.groupBox4.Controls.Add(this.btnFile);
             this.groupBox4.Controls.Add(this.btnDisconnectAll);
             this.groupBox4.Location = new System.Drawing.Point(12, 11);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1274, 134);
+            this.groupBox4.Size = new System.Drawing.Size(1029, 134);
             this.groupBox4.TabIndex = 48;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Chức Năng";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.lblTimeLeft);
+            this.groupBox5.Location = new System.Drawing.Point(913, 19);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(112, 79);
+            this.groupBox5.TabIndex = 38;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Time Left:";
+            // 
+            // lblTimeLeft
+            // 
+            this.lblTimeLeft.AutoSize = true;
+            this.lblTimeLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeLeft.Location = new System.Drawing.Point(26, 36);
+            this.lblTimeLeft.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTimeLeft.Name = "lblTimeLeft";
+            this.lblTimeLeft.Size = new System.Drawing.Size(67, 25);
+            this.lblTimeLeft.TabIndex = 11;
+            this.lblTimeLeft.Text = "00:00";
+            // 
             // btnThuBai
             // 
-            this.btnThuBai.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThuBai.Location = new System.Drawing.Point(1107, 19);
+            this.btnThuBai.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnThuBai.Location = new System.Drawing.Point(726, 19);
             this.btnThuBai.Name = "btnThuBai";
-            this.btnThuBai.Size = new System.Drawing.Size(115, 41);
+            this.btnThuBai.Size = new System.Drawing.Size(98, 41);
             this.btnThuBai.TabIndex = 47;
             this.btnThuBai.Text = "Thu Bài";
             this.btnThuBai.UseVisualStyleBackColor = true;
             this.btnThuBai.Click += new System.EventHandler(this.btnThuBai_Click);
             // 
-            // grbTimeLeft
-            // 
-            this.grbTimeLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grbTimeLeft.Controls.Add(this.label4);
-            this.grbTimeLeft.Location = new System.Drawing.Point(604, 69);
-            this.grbTimeLeft.Name = "grbTimeLeft";
-            this.grbTimeLeft.Size = new System.Drawing.Size(114, 65);
-            this.grbTimeLeft.TabIndex = 0;
-            this.grbTimeLeft.TabStop = false;
-            this.grbTimeLeft.Text = "Thời gian thi";
-            this.grbTimeLeft.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 37);
-            this.label4.TabIndex = 37;
-            this.label4.Text = "00:00";
-            // 
             // cmdNhapVungIP
             // 
-            this.cmdNhapVungIP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdNhapVungIP.Location = new System.Drawing.Point(7, 19);
+            this.cmdNhapVungIP.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmdNhapVungIP.Location = new System.Drawing.Point(-12, 19);
             this.cmdNhapVungIP.Name = "cmdNhapVungIP";
-            this.cmdNhapVungIP.Size = new System.Drawing.Size(115, 41);
+            this.cmdNhapVungIP.Size = new System.Drawing.Size(98, 41);
             this.cmdNhapVungIP.TabIndex = 46;
             this.cmdNhapVungIP.Text = "Nhập Vùng IP";
             this.cmdNhapVungIP.UseVisualStyleBackColor = true;
@@ -136,36 +131,21 @@
             // 
             // cmdKichHoatAllClient
             // 
-            this.cmdKichHoatAllClient.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdKichHoatAllClient.Location = new System.Drawing.Point(819, 19);
+            this.cmdKichHoatAllClient.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmdKichHoatAllClient.Location = new System.Drawing.Point(603, 19);
             this.cmdKichHoatAllClient.Name = "cmdKichHoatAllClient";
-            this.cmdKichHoatAllClient.Size = new System.Drawing.Size(115, 41);
+            this.cmdKichHoatAllClient.Size = new System.Drawing.Size(98, 41);
             this.cmdKichHoatAllClient.TabIndex = 45;
             this.cmdKichHoatAllClient.Text = "Active All";
             this.cmdKichHoatAllClient.UseVisualStyleBackColor = true;
-            // 
-            // cmdBatDauLamBai
-            // 
-            this.cmdBatDauLamBai.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdBatDauLamBai.Location = new System.Drawing.Point(968, 19);
-            this.cmdBatDauLamBai.Name = "cmdBatDauLamBai";
-            this.cmdBatDauLamBai.Size = new System.Drawing.Size(115, 41);
-            this.cmdBatDauLamBai.TabIndex = 44;
-            this.cmdBatDauLamBai.Text = "Start";
-            this.cmdBatDauLamBai.UseVisualStyleBackColor = true;
+            this.cmdKichHoatAllClient.Click += new System.EventHandler(this.cmdKichHoatAllClient_Click);
             // 
             // btn_SendMessage
             // 
-            this.btn_SendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_SendMessage.Location = new System.Drawing.Point(260, 19);
+            this.btn_SendMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_SendMessage.Location = new System.Drawing.Point(234, 19);
             this.btn_SendMessage.Name = "btn_SendMessage";
-            this.btn_SendMessage.Size = new System.Drawing.Size(115, 41);
+            this.btn_SendMessage.Size = new System.Drawing.Size(98, 41);
             this.btn_SendMessage.TabIndex = 40;
             this.btn_SendMessage.Text = "Message";
             this.btn_SendMessage.UseVisualStyleBackColor = true;
@@ -173,36 +153,20 @@
             // 
             // button11
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.Location = new System.Drawing.Point(676, 19);
+            this.button11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button11.Location = new System.Drawing.Point(480, 19);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(115, 41);
+            this.button11.Size = new System.Drawing.Size(98, 41);
             this.button11.TabIndex = 40;
             this.button11.Text = "Disable empty PC";
             this.button11.UseVisualStyleBackColor = true;
             // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(540, 19);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(115, 41);
-            this.button10.TabIndex = 40;
-            this.button10.Text = "CSDL";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
             // btnFile
             // 
-            this.btnFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFile.Location = new System.Drawing.Point(404, 19);
+            this.btnFile.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnFile.Location = new System.Drawing.Point(357, 19);
             this.btnFile.Name = "btnFile";
-            this.btnFile.Size = new System.Drawing.Size(115, 41);
+            this.btnFile.Size = new System.Drawing.Size(98, 41);
             this.btnFile.TabIndex = 40;
             this.btnFile.Text = "File";
             this.btnFile.UseVisualStyleBackColor = true;
@@ -210,16 +174,25 @@
             // 
             // btnDisconnectAll
             // 
-            this.btnDisconnectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDisconnectAll.Location = new System.Drawing.Point(130, 19);
+            this.btnDisconnectAll.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDisconnectAll.Location = new System.Drawing.Point(111, 19);
             this.btnDisconnectAll.Name = "btnDisconnectAll";
-            this.btnDisconnectAll.Size = new System.Drawing.Size(115, 41);
+            this.btnDisconnectAll.Size = new System.Drawing.Size(98, 41);
             this.btnDisconnectAll.TabIndex = 40;
-            this.btnDisconnectAll.Text = "Disconnect All";
+            this.btnDisconnectAll.Text = "Refresh";
             this.btnDisconnectAll.UseVisualStyleBackColor = true;
             this.btnDisconnectAll.Click += new System.EventHandler(this.btnDisconnectAll_Click);
+            // 
+            // cmdBatDauLamBai
+            // 
+            this.cmdBatDauLamBai.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cmdBatDauLamBai.Location = new System.Drawing.Point(956, 375);
+            this.cmdBatDauLamBai.Name = "cmdBatDauLamBai";
+            this.cmdBatDauLamBai.Size = new System.Drawing.Size(78, 41);
+            this.cmdBatDauLamBai.TabIndex = 44;
+            this.cmdBatDauLamBai.Text = "Begin";
+            this.cmdBatDauLamBai.UseVisualStyleBackColor = true;
+            this.cmdBatDauLamBai.Click += new System.EventHandler(this.cmdBatDauLamBai_Click);
             // 
             // groupBox3
             // 
@@ -269,7 +242,7 @@
             this.txtClientPath.Name = "txtClientPath";
             this.txtClientPath.Size = new System.Drawing.Size(375, 27);
             this.txtClientPath.TabIndex = 34;
-            this.txtClientPath.Text = "D:\\tam";
+            this.txtClientPath.Text = "D:\\StudentFolder";
             // 
             // txtServerPath
             // 
@@ -279,7 +252,7 @@
             this.txtServerPath.Name = "txtServerPath";
             this.txtServerPath.Size = new System.Drawing.Size(375, 27);
             this.txtServerPath.TabIndex = 34;
-            this.txtServerPath.Text = "D:\\serverPath";
+            this.txtServerPath.Text = "D:\\ServerFolder";
             // 
             // label3
             // 
@@ -307,9 +280,9 @@
             this.groupBox1.Controls.Add(this.lsvDeThi);
             this.groupBox1.Controls.Add(this.btnPhatDe);
             this.groupBox1.Controls.Add(this.btnThemDe);
-            this.groupBox1.Location = new System.Drawing.Point(730, 422);
+            this.groupBox1.Location = new System.Drawing.Point(730, 419);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(555, 140);
+            this.groupBox1.Size = new System.Drawing.Size(311, 143);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đề Thi";
@@ -318,9 +291,9 @@
             // 
             this.btnXoaDe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXoaDe.Location = new System.Drawing.Point(470, 63);
+            this.btnXoaDe.Location = new System.Drawing.Point(226, 63);
             this.btnXoaDe.Name = "btnXoaDe";
-            this.btnXoaDe.Size = new System.Drawing.Size(78, 29);
+            this.btnXoaDe.Size = new System.Drawing.Size(78, 32);
             this.btnXoaDe.TabIndex = 34;
             this.btnXoaDe.Text = "Xóa";
             this.btnXoaDe.UseVisualStyleBackColor = true;
@@ -341,7 +314,7 @@
             this.lsvDeThi.Location = new System.Drawing.Point(6, 25);
             this.lsvDeThi.MultiSelect = false;
             this.lsvDeThi.Name = "lsvDeThi";
-            this.lsvDeThi.Size = new System.Drawing.Size(448, 109);
+            this.lsvDeThi.Size = new System.Drawing.Size(179, 112);
             this.lsvDeThi.TabIndex = 33;
             this.lsvDeThi.UseCompatibleStateImageBehavior = false;
             this.lsvDeThi.View = System.Windows.Forms.View.List;
@@ -355,9 +328,9 @@
             // 
             this.btnPhatDe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPhatDe.Location = new System.Drawing.Point(470, 106);
+            this.btnPhatDe.Location = new System.Drawing.Point(226, 106);
             this.btnPhatDe.Name = "btnPhatDe";
-            this.btnPhatDe.Size = new System.Drawing.Size(78, 28);
+            this.btnPhatDe.Size = new System.Drawing.Size(78, 31);
             this.btnPhatDe.TabIndex = 32;
             this.btnPhatDe.Text = "Phát Đề";
             this.btnPhatDe.UseVisualStyleBackColor = true;
@@ -367,9 +340,9 @@
             // 
             this.btnThemDe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThemDe.Location = new System.Drawing.Point(470, 27);
+            this.btnThemDe.Location = new System.Drawing.Point(226, 27);
             this.btnThemDe.Name = "btnThemDe";
-            this.btnThemDe.Size = new System.Drawing.Size(78, 33);
+            this.btnThemDe.Size = new System.Drawing.Size(78, 36);
             this.btnThemDe.TabIndex = 31;
             this.btnThemDe.Text = "Thêm";
             this.btnThemDe.UseVisualStyleBackColor = true;
@@ -383,7 +356,7 @@
             this.groupBox6.Controls.Add(this.flpMain);
             this.groupBox6.Location = new System.Drawing.Point(12, 147);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1276, 269);
+            this.groupBox6.Size = new System.Drawing.Size(753, 269);
             this.groupBox6.TabIndex = 53;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Danh sách các máy con trong phòng";
@@ -394,16 +367,40 @@
             this.flpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpMain.Location = new System.Drawing.Point(3, 23);
             this.flpMain.Name = "flpMain";
-            this.flpMain.Size = new System.Drawing.Size(1270, 243);
+            this.flpMain.Size = new System.Drawing.Size(747, 243);
             this.flpMain.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtSetTime);
+            this.groupBox2.Location = new System.Drawing.Point(925, 170);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(112, 73);
+            this.groupBox2.TabIndex = 54;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Set Time:";
+            // 
+            // txtSetTime
+            // 
+            this.txtSetTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSetTime.Location = new System.Drawing.Point(8, 23);
+            this.txtSetTime.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSetTime.Name = "txtSetTime";
+            this.txtSetTime.Size = new System.Drawing.Size(95, 37);
+            this.txtSetTime.TabIndex = 13;
+            this.txtSetTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1300, 574);
+            this.ClientSize = new System.Drawing.Size(1052, 574);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cmdBatDauLamBai);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -411,12 +408,14 @@
             this.Name = "Server";
             this.Text = "Server";
             this.groupBox4.ResumeLayout(false);
-            this.grbTimeLeft.ResumeLayout(false);
-            this.grbTimeLeft.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -429,7 +428,6 @@
         private System.Windows.Forms.Button cmdBatDauLamBai;
         private System.Windows.Forms.Button btn_SendMessage;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button btnFile;
         private System.Windows.Forms.Button btnDisconnectAll;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -441,8 +439,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnThemDe;
-        private System.Windows.Forms.GroupBox grbTimeLeft;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.FlowLayoutPanel flpMain;
 		private System.Windows.Forms.Button btnPhatDe;
@@ -450,6 +446,10 @@
 		private System.Windows.Forms.ListView lsvDeThi;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.Button btnXoaDe;
-	}
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtSetTime;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label lblTimeLeft;
+    }
 }
 

@@ -11,7 +11,9 @@ namespace Common
     [Serializable]
     public enum DataContainerType
     {
+        BatDauLamBai,
         PhatDe,
+        NopBai,
         ThuBai,
         LuuBaiODau,
         GuiDanhSachSV,

@@ -17,7 +17,6 @@ D:\dev\LapTrinhMang\Quan ly thi cu\Common\obj\Debug\Common.pdb
 D:\dev\Socket\Quan-ly-thi-cu\Common\bin\Debug\Common.dll
 D:\dev\Socket\Quan-ly-thi-cu\Common\bin\Debug\Common.pdb
 D:\dev\Socket\Quan-ly-thi-cu\Common\bin\Debug\Tulpep.NotificationWindow.dll
-D:\dev\Socket\Quan-ly-thi-cu\Common\obj\Debug\Common.csprojAssemblyReference.cache
 D:\dev\Socket\Quan-ly-thi-cu\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 D:\dev\Socket\Quan-ly-thi-cu\Common\obj\Debug\Common.csproj.CopyComplete
 D:\dev\Socket\Quan-ly-thi-cu\Common\obj\Debug\Common.dll

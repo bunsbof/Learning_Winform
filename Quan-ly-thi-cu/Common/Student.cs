@@ -29,11 +29,11 @@ namespace Common
             LastName = lastName;
         }
 
-        public Student(DataRow row)
-        {
-            MSSV = row["MSSV"].ToString();
-            LastName = row["HoDem"].ToString();
-            FirstName = row["Ten"].ToString();
-        }
+        //public Student(DataRow row)
+        //{
+        //    MSSV = row["MSSV"].ToString();
+        //    LastName = row["HoDem"].ToString();
+        //    FirstName = row["Ten"].ToString();
+        //}
     }
 }

@@ -62,6 +62,8 @@ namespace Server
 			}
 		}
 
+		public Action<Student> onNhanSinhVien;
+
 		#endregion
 
 		#region Init client info list
@@ -213,10 +215,6 @@ namespace Server
 							if (!Directory.Exists(savePath))
 								Directory.CreateDirectory(savePath);
 
-							string timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString();
-
-							savePath = Path.Combine(savePath, timestamp);
-
 							string fileName = fileNopBaiContainer.FileInfo.Name;
 							string fullPath = Path.Combine(savePath, fileName);
 
@@ -263,6 +261,15 @@ namespace Server
 
 		#region Methods
 
+		public void batDauLamBai(int sophut)
+		{
+			DataContainer container = new DataContainer(DataContainerType.BatDauLamBai, sophut);
+			foreach (Socket item in clientList)
+			{
+				item.Send(container.Serialize());
+			}
+		}
+
 		public void GuiTinNhanChoTatCaMayCon(string tinNhan)
 		{
 			DataContainer dataContainer = new DataContainer(DataContainerType.GuiThongBaoAll, tinNhan);
@@ -295,6 +302,7 @@ namespace Server
 			//lưu đường dẫn thu bài ở phía Server
 			this.serverPath = serverPath;
 		}
+		
 
 		public void PhatDeThi(List<string> danhSachDeThi)
 		{
@@ -345,12 +353,18 @@ namespace Server
 
 		public void ThuBai()
 		{
-			//Gọi DataContainer trong Common định dạng enum thu bài(đc viết sẵn)
-			DataContainer container = new DataContainer(DataContainerType.ThuBai, null);//tại sao null
-			//cho nó vào 1 luồng (Socket) với danh sách Client đc tạo ra ở trên
+			////Gọi DataContainer trong Common định dạng enum thu bài(đc viết sẵn)
+			//DataContainer container = new DataContainer(DataContainerType.ThuBai, null);//tại sao null
+			////cho nó vào 1 luồng (Socket) với danh sách Client đc tạo ra ở trên
+			//foreach (Socket socket in clientList)
+			//{
+			//	//mã hóa dữ liệu thành 01010101 rồi gửi (nhớ là gửi qua luồng Socket)
+			//	socket.Send(container.Serialize());
+			//}
+			DataContainer container = new DataContainer(DataContainerType.ThuBai, null);
+
 			foreach (Socket socket in clientList)
 			{
-				//mã hóa dữ liệu thành 01010101 rồi gửi (nhớ là gửi qua luồng Socket)
 				socket.Send(container.Serialize());
 			}
 		}

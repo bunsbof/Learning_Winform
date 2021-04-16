@@ -53,6 +53,7 @@
     <Compile Include="PathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataContainer.cs" />
+    <Compile Include="ServerResponse.cs" />
     <Compile Include="Student.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +22,11 @@ namespace Server
 
         PopupNotifier popup;
 
+        int counter = 0; // Dem nguoc theo tung giay
+
+        List<Socket> clientList;
+
+        System.Timers.Timer countdown;
 
         public Server()
         {
@@ -41,11 +48,23 @@ namespace Server
 
         }
 
+        byte[] Serialize(object data)
+        {
+            MemoryStream stream = new MemoryStream();
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            formatter.Serialize(stream, data);
+
+            return stream.ToArray();
+        }
+
         void InitPopupNotifier()
         {
             popup = new PopupNotifier();
             popup.ShowOptionsButton = false;
-            popup.ContentPadding = new Padding(10, 3, 10, 3);
+            popup.ContentPadding = new Padding(10, 3, 50, 3);
+            popup.HeaderColor = Color.Black;
+            popup.BodyColor = Color.White;
             popup.TitlePadding = new Padding(10, 3, 10, 3);
         }
 
@@ -284,7 +303,6 @@ namespace Server
 
 		private void btnThuBai_Click(object sender, EventArgs e)
 		{
-            //đoạn này được viết kỹ bên ServerProgram
             serverProgram.ThuBai();
 		}
 
@@ -338,8 +356,43 @@ namespace Server
 
 
 
+
         #endregion
 
-        
+        private void cmdBatDauLamBai_Click(object sender, EventArgs e)
+        {
+            int minute = Convert.ToInt32(txtSetTime.Text);
+            counter = minute * 60;
+            countdown.Enabled = true;
+
+            serverProgram.batDauLamBai(minute);
+        }
+
+        private void AddMessage(string v)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Countdown_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            counter -= 1;
+
+            int minute = counter / 60;
+            int second = counter % 60;
+
+            lblTimeLeft.Text = minute + ":" + second;
+
+            if (counter == 0)
+            {
+                countdown.Stop();
+
+                AddMessage("Server: Đã hết thời gian làm bài");
+            }
+        }
+
+        private void cmdKichHoatAllClient_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
