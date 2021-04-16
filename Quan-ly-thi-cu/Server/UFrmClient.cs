@@ -58,7 +58,6 @@ namespace Server
 
             if (!string.IsNullOrWhiteSpace(client.StudentInfo.MSSV))
             {
-                MessageBox.Show(client.StudentInfo.MSSV);
                 txtStudentId.Text = client.StudentInfo.MSSV;
             }
             else
