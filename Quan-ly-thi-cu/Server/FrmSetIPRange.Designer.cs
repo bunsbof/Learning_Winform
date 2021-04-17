@@ -49,7 +49,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.Size = new System.Drawing.Size(82, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "IP đầu tiên:";
             // 
@@ -57,7 +57,7 @@
             // 
             this.txtIPBegin.Location = new System.Drawing.Point(93, 27);
             this.txtIPBegin.Name = "txtIPBegin";
-            this.txtIPBegin.Size = new System.Drawing.Size(205, 23);
+            this.txtIPBegin.Size = new System.Drawing.Size(205, 27);
             this.txtIPBegin.TabIndex = 2;
             this.txtIPBegin.Text = "192.168.255.1";
             this.txtIPBegin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -82,7 +82,7 @@
             // 
             this.txtSubnetMask.Location = new System.Drawing.Point(93, 90);
             this.txtSubnetMask.Name = "txtSubnetMask";
-            this.txtSubnetMask.Size = new System.Drawing.Size(205, 23);
+            this.txtSubnetMask.Size = new System.Drawing.Size(205, 27);
             this.txtSubnetMask.TabIndex = 9;
             this.txtSubnetMask.Text = "255.255.255.0";
             this.txtSubnetMask.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -91,7 +91,7 @@
             // 
             this.txtIpEnd.Location = new System.Drawing.Point(93, 58);
             this.txtIpEnd.Name = "txtIpEnd";
-            this.txtIpEnd.Size = new System.Drawing.Size(205, 23);
+            this.txtIpEnd.Size = new System.Drawing.Size(205, 27);
             this.txtIpEnd.TabIndex = 8;
             this.txtIpEnd.Text = "192.168.255.60";
             this.txtIpEnd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -111,7 +111,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 15);
+            this.label3.Size = new System.Drawing.Size(96, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Subnet Mask:";
             // 
@@ -120,7 +120,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 15);
+            this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "IP cuối cùng";
             // 
@@ -151,7 +151,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 30);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 15);
+            this.label6.Size = new System.Drawing.Size(89, 20);
             this.label6.TabIndex = 3;
             this.label6.Text = "Số máy con:";
             // 
@@ -159,14 +159,14 @@
             // 
             this.txtClientNumbers.Location = new System.Drawing.Point(93, 27);
             this.txtClientNumbers.Name = "txtClientNumbers";
-            this.txtClientNumbers.Size = new System.Drawing.Size(205, 23);
+            this.txtClientNumbers.Size = new System.Drawing.Size(205, 27);
             this.txtClientNumbers.TabIndex = 2;
             this.txtClientNumbers.Text = "50";
             this.txtClientNumbers.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FrmSetIPRange
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 277);
             this.Controls.Add(this.groupBox2);

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 //dùng như 1 cái package đóng gói tập tin để truyền đi
-namespace Common 
+namespace Core 
 {
 	[Serializable]
     public class FileContainer

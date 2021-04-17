@@ -97,7 +97,7 @@ namespace Server
             //dùng để hiển thị cái hình ảnh này lên nguyên cái form
             //giải thích : tạo biến bitmap truyền qua GetPathTo đc viết trong PathUtils của Common
             //                 + đưa file hình ảnh vào lưu trong đó
-            Bitmap bitmap = new Bitmap(Common.PathUtils.GetPathTo("Assets", imageName));
+            Bitmap bitmap = new Bitmap(Core.PathUtils.GetPathTo("Assets", imageName));
             //                 + hiển thị hình ảnh đó trên pbClient(PictureBox)
             pbClient.BackgroundImage = bitmap;
         }
@@ -107,15 +107,15 @@ namespace Server
             string message = "";//tạo chuỗi thông báo
             //nếu ClientInfoStatus được trả về là ClientConnected thì sẽ trả về string bên dưới
             if (client.Status == ClientInfoStatus.ClientConnected)
-                message += "Máy con đã kết nối";
+                message += "Client connected";
             //nếu ClientInfoStatus được trả về là StudentConnected thì sẽ trả về string bên dưới
             else if (client.Status == ClientInfoStatus.StudentConnected)
-                message += "Sinh viên đã kết nối";
+                message += "Student connected";
             //nếu ClientInfoStatus được trả về là Disconnected thì sẽ trả về string bên dưới
             else if (client.Status == ClientInfoStatus.Disconnected)
-                message += "Máy con mất kết nối";
+                message += "Client lost connection";
             else
-                message += "Máy con chưa kết nối";
+                message += "Client not found";
             //     Gets the newline string defined for this environment.
             message += Environment.NewLine;
 

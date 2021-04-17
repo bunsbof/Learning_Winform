@@ -67,12 +67,12 @@ namespace Server
 				}
 				else
 				{
-					throw new Exception("Thông tin dãy IP của máy con không hợp lệ");
+					throw new Exception("Client Ip invalid");
 				}	
 			}
 			catch
 			{
-				throw new Exception("Thông tin dãy IP của máy con không hợp lệ");
+				throw new Exception("Client IPs invalid");
 			}
 		}
 

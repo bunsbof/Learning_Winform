@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using Common;
 using System.Runtime.InteropServices;
 using System.IO;
+using Core;
 
 namespace Server
 {
@@ -35,6 +35,12 @@ namespace Server
 		}
 		//chưa hiểu action
 		#region Events
+		event Action<string> _onNotification;
+		public event Action<string> OnNotification
+		{
+			add { _onNotification += value; }
+			remove { _onNotification -= value; }
+		}
 
 		event Action<List<ClientInfo>> _onClientListChanged;
 		public event Action<List<ClientInfo>> OnClientListChanged
@@ -196,9 +202,9 @@ namespace Server
 							break;
 
 						case DataContainerType.SendStudent:
+							Student student1 = dataContainer.Data as Student;
 
-							Student student = dataContainer.Data as Student;
-							clientInfo.StudentInfo = student;
+							clientInfo.StudentInfo = student1;
 							clientInfo.Status = ClientInfoStatus.StudentConnected;
 
 							if (_onClientListChanged != null)
@@ -261,13 +267,29 @@ namespace Server
 
 		#region Methods
 
-		public void batDauLamBai(int sophut)
+		public void CamChuongTrinh(List<string> programs)
 		{
-			DataContainer container = new DataContainer(DataContainerType.BatDauLamBai, sophut);
+			DataContainer container = new DataContainer(DataContainerType.BlockProgram, programs);
+
 			foreach (Socket item in clientList)
 			{
 				item.Send(container.Serialize());
 			}
+
+			if (_onNotification != null)
+				_onNotification("List of locking program have send");
+		}
+
+		public void batDauLamBai(int sophut)
+		{
+			DataContainer container = new DataContainer(DataContainerType.BeginExam, sophut);
+			foreach (Socket item in clientList)
+			{
+				item.Send(container.Serialize());
+			}
+
+			if (_onNotification != null)
+				_onNotification("Begin examination");
 		}
 
 		public void GuiTinNhanChoTatCaMayCon(string tinNhan)
@@ -353,12 +375,11 @@ namespace Server
 
 		public void ThuBai()
 		{
-			////Gọi DataContainer trong Common định dạng enum thu bài(đc viết sẵn)
-			//DataContainer container = new DataContainer(DataContainerType.ThuBai, null);//tại sao null
-			////cho nó vào 1 luồng (Socket) với danh sách Client đc tạo ra ở trên
+
+			//DataContainer container = new DataContainer(DataContainerType.ThuBai, null);
+
 			//foreach (Socket socket in clientList)
 			//{
-			//	//mã hóa dữ liệu thành 01010101 rồi gửi (nhớ là gửi qua luồng Socket)
 			//	socket.Send(container.Serialize());
 			//}
 			DataContainer container = new DataContainer(DataContainerType.ThuBai, null);
@@ -367,6 +388,9 @@ namespace Server
 			{
 				socket.Send(container.Serialize());
 			}
+
+			if (_onNotification != null)
+				_onNotification("Sent notification to All Client");
 		}
 
 		public void DisconnectAll()

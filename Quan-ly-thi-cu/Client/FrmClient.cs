@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +21,11 @@ namespace Client
         private const int SERVER_PORT = 2010;
         Thread DitecThread;
 
+        int counter = 0; // Dem nguoc theo tung giay
+        System.Timers.Timer countdown;
+
+        ProcessKill processkill;
+
         ClientProgram clientProgram;
         PopupNotifier popup;
 
@@ -35,12 +40,142 @@ namespace Client
 			clientProgram.OnSuccessNotification += HandleOnSuccessNotification;
 			clientProgram.OnErrorNotification += HandleOnErrorNotification;
 			clientProgram.OnReceivedExam += HandleOnReceivedExam;
-
+            clientProgram.OnCamChuongTrinh += HandleOnCamChuongTrinh;
             clientProgram.onNhanThongBao = HandleOnNhanThongBao;
             clientProgram.onNhanDanhSachSVTuExcel = HandleOnNhanDanhSachSVTuExcel;
 
+            clientProgram.onNhanSoPhut = HandleOnNhanSoPhut;
+
+
+            countdown = new System.Timers.Timer();
+            countdown.Elapsed += Countdown_Elapsed; ;
+            countdown.Interval = 1000;
+
             InitPopupNotifier();
         }
+        void InitProcessManager(List<string> processes)
+        {
+            processkill = new ProcessKill(processes);
+            processkill.OnInvalidProcessKilled += HandleOnInvalidProcessKilled;
+        }
+        private void HandleOnCamChuongTrinh(List<string> programs)
+        {
+            if (processkill == null)
+            {
+                InitProcessManager(programs);
+                return;
+            }
+
+            foreach (string program in programs)
+            {
+                processkill.AddProcess(program);
+            }
+        }
+
+        private void HandleOnInvalidProcessKilled(string processName)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    RenderNotificationPopup("Lỗi", "chương trình không được phép chạy: " + processName);
+                });
+            }
+            else
+            {
+                RenderNotificationPopup("Lỗi", "chương trình không được phép chạy: " + processName);
+            }
+        }
+
+        private void Countdown_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            counter -= 1;
+
+            int minute = counter / 60;
+            int second = counter % 60;
+
+            if (counter % (30 * 60) == 0)
+            {
+                if (this.InvokeRequired)
+                {
+                    this.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        string msg = "Time remain: " + minute + " minute - " + second + " second";
+                        RenderNotificationPopup("Pay attention to examition time", msg);
+                    });
+                }
+                else
+                {
+                    string msg = "Time remain: " + minute + " minute - " + second + " second";
+                    RenderNotificationPopup("Pay attention to examition time", msg);
+                }
+            }
+            else if (counter == (15 * 60))
+            {
+                if (this.InvokeRequired)
+                {
+                    this.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        string msg = "You have 15 minute left";
+                        RenderNotificationPopup("Pay attention to examition time", msg);
+                    });
+                }
+                else
+                {
+                    string msg = "You have 15 minute left";
+                    RenderNotificationPopup("Pay attention to examition time", msg);
+                }
+            }
+            else if (counter == (10 * 60))
+            {
+                if (this.InvokeRequired)
+                {
+                    this.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        string msg = "You have 10 minute left, pay attention to RAR your folder or files";
+                        RenderNotificationPopup("Pay attention to examition time", msg);
+                    });
+                }
+                else
+                {
+                    string msg = "You have 10 minute left, pay attention to RAR your folder or files";
+                    RenderNotificationPopup("Pay attention to examition time", msg);
+                }
+            }
+            else if (counter == (5 * 60))
+            {
+                if (this.InvokeRequired)
+                {
+                    this.BeginInvoke((MethodInvoker)delegate ()
+                    {
+                        string msg = "RAR your folder or files";
+                        RenderNotificationPopup("Pay attention to examition time", msg);
+                    });
+                }
+                else
+                {
+                    string msg = "RAR your folder or files";
+                    RenderNotificationPopup("Pay attention to examition time", msg);
+                }
+            }
+
+            lblThoiGianConLai.Text = minute + " minute - " + second + " second";
+
+            if (counter == 0)
+            {
+                countdown.Stop();
+
+                btnFinishExam.PerformClick();
+            }
+        }
+
+
+        private void HandleOnNhanSoPhut(int minute)
+        {
+            counter = minute * 60;
+            countdown.Enabled = true;
+        }
+
         void HandleOnNhanThongBao(string message)
         {
 
@@ -232,6 +367,18 @@ namespace Client
         //    }
         //}
 
+        private void cbDSThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDSThi.SelectedItem == null)
+            {
+                return;
+            }
+
+            Student student = cbDSThi.SelectedItem as Student;
+            lblHoTen.Text = student.FullName;
+            lblMaSo.Text = student.MSSV;
+        }
+
         private void btnFinishExam_Click(object sender, EventArgs e)
         {
 
@@ -243,6 +390,7 @@ namespace Client
                 return;
             Student student = cbDSThi.SelectedItem as Student;
             clientProgram.SendStudent(student);
+            btnFinishExam.Enabled = true;
         }
     }
 }

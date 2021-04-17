@@ -6,12 +6,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common
+namespace Core
 {
     [Serializable]
     public enum DataContainerType
     {
-        BatDauLamBai,
         PhatDe,
         NopBai,
         ThuBai,
@@ -25,6 +24,7 @@ namespace Common
         SendPcName,
         DisconnectAll,
         BeginExam,
+        BlockProgram,
         FinishExam,
         LockClient,
         Undefined

@@ -66,6 +66,12 @@
   <ItemGroup>
     <Compile Include="ClientInfo.cs" />
     <Compile Include="ClientInfoManager.cs" />
+    <Compile Include="FrmLocking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLocking.Designer.cs">
+      <DependentUpon>FrmLocking.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMessage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="UFrmClient.Designer.cs">
       <DependentUpon>UFrmClient.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmLocking.resx">
+      <DependentUpon>FrmLocking.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMessage.resx">
       <DependentUpon>FrmMessage.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,9 +139,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
+    <ProjectReference Include="..\Common\Core.csproj">
       <Project>{d6a2a208-daba-499b-8117-385dc4a8d5ce}</Project>
-      <Name>Common</Name>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

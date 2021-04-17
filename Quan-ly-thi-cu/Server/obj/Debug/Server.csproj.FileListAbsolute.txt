@@ -57,6 +57,7 @@ D:\dev\Socket\Quan-ly-thi-cu\Server\bin\Debug\Common.pdb
 D:\dev\Socket\Quan-ly-thi-cu\Server\bin\Debug\EPPlus.xml
 D:\dev\Socket\Quan-ly-thi-cu\Server\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
 D:\dev\Socket\Quan-ly-thi-cu\Server\obj\Debug\Server.csprojAssemblyReference.cache
+D:\dev\Socket\Quan-ly-thi-cu\Server\obj\Debug\Server.FrmLocking.resources
 D:\dev\Socket\Quan-ly-thi-cu\Server\obj\Debug\Server.FrmMessage.resources
 D:\dev\Socket\Quan-ly-thi-cu\Server\obj\Debug\Server.Server.resources
 D:\dev\Socket\Quan-ly-thi-cu\Server\obj\Debug\Server.FrmSetIPRange.resources

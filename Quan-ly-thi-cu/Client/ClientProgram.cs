@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
-using Common;
+using Core;
 using System.Threading;
 using System.Windows.Forms;
 using Tulpep.NotificationWindow;
@@ -26,7 +26,15 @@ namespace Client
 
 		string savePath = null; // Thu muc luu de thi
 
-        event Action<string> _onSuccessNotification;
+		public Action<int> onNhanSoPhut;
+
+		event Action<List<string>> _onCamChuongTrinh;
+		public event Action<List<string>> OnCamChuongTrinh
+		{
+			add { _onCamChuongTrinh += value; }
+			remove { _onCamChuongTrinh -= value; }
+		}
+		event Action<string> _onSuccessNotification;
 		public event Action<string> OnSuccessNotification
 		{
 			add
@@ -70,6 +78,8 @@ namespace Client
 			DataContainer container = new DataContainer(DataContainerType.SendStudent, student);
 
 			SendDataToServer(container);
+			if (_onSuccessNotification != null)
+				_onSuccessNotification("Student information is sent");
 		}
 
 		public void SetClientPath(string serverPath)
@@ -89,7 +99,7 @@ namespace Client
 				client.Connect(IP);
 
 				if (_onSuccessNotification != null)
-					_onSuccessNotification("Kết nối đến máy chủ thành công");
+					_onSuccessNotification("Connected");
 
 				DataContainer container = new DataContainer(DataContainerType.SendPcName, computerName);
 				SendDataToServer(container);
@@ -101,7 +111,7 @@ namespace Client
 			catch (Exception ex)
 			{
 				if (_onErrorNotification != null)
-					_onErrorNotification("Có lỗi xảy ra trong quá trình kết nối đến máy chủ", ex);
+					_onErrorNotification("Cant connect to Server", ex);
 			}
 		}
 
@@ -194,7 +204,7 @@ namespace Client
 							this.savePath = fileContainer.SavePath;
 
 							if (Directory.Exists(savePath))
-								Common.DirectoryHelper.DeleteAllFileInDirectory(savePath);
+								Core.DirectoryHelper.DeleteAllFileInDirectory(savePath);
 
 							Directory.CreateDirectory(savePath);
 
@@ -212,7 +222,7 @@ namespace Client
 								_onReceivedExam(fullPath);
 
 							if (_onSuccessNotification != null)
-								_onSuccessNotification("Đã nhận đề thi thành công");
+								_onSuccessNotification("Recieved");
 
 							break;
 
@@ -231,7 +241,7 @@ namespace Client
 								// Handle error
 								if (_onErrorNotification != null)
 								{
-									string msg = "Không tìm thấy thư mục lưu bài thi tại: " + this.savePath;
+									string msg = "Cant find exam folder at: " + this.savePath;
 
 									_onErrorNotification(msg, null);
 								}
@@ -266,7 +276,7 @@ namespace Client
 							if (string.IsNullOrWhiteSpace(fileNopBai))
 							{
 								if (_onErrorNotification != null)
-									_onErrorNotification("Không tìm thấy thư mục lưu bài", null);
+									_onErrorNotification("Cant find folder", null);
 
 								break;
 							}
@@ -301,16 +311,25 @@ namespace Client
 						case DataContainerType.DisconnectAll:
 
 							if (_onSuccessNotification != null)
-								_onSuccessNotification("Đã ngắt đường truyền do nhận được yêu cầu đóng kết nối từ máy chủ");
+								_onSuccessNotification("Server is not responding");
 
 							CloseConnection();
 							break;
 
 						case DataContainerType.BeginExam:
+							int minnute = Convert.ToInt32(dataContainer.Data);
+
+							if (onNhanSoPhut != null)
+								onNhanSoPhut(minnute);
+							break;
+						case DataContainerType.BlockProgram:
+							List<string> programs = dataContainer.Data as List<string>;
+
+							if (_onCamChuongTrinh != null)
+								_onCamChuongTrinh(programs);
 							break;
 
 						case DataContainerType.FinishExam:
-
 							break;
 
 						case DataContainerType.LockClient:
@@ -326,7 +345,7 @@ namespace Client
 			{
 				if (_onErrorNotification != null)
 				{
-					string msg = "Có lỗi xảy ra trong quá trình tương tác với server. Đã ngắt đường truyền";
+					string msg = "Cant contact to Server. Disconnected";
 					_onErrorNotification(msg, ex);
 				}
 

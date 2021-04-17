@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Core;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,6 @@ namespace Server
 
         int counter = 0; // Dem nguoc theo tung giay
 
-        List<Socket> clientList;
 
         System.Timers.Timer countdown;
 
@@ -41,6 +40,10 @@ namespace Server
 
             serverProgram.OnServerStarted += HandleOnServerStarted;
             serverProgram.OnClientListChanged += HandleOnClientListChanged;
+
+            countdown = new System.Timers.Timer();
+            countdown.Elapsed += Countdown_Elapsed;
+            countdown.Interval = 1000;
 
             serverProgram.Start();
 
@@ -155,6 +158,29 @@ namespace Server
         #endregion
 
         #region Methods
+
+        void RenderNotificationPopup(string title, string content)
+        {
+            popup.TitleText = title;
+            popup.ContentText = content;
+
+            popup.Popup();
+        }
+
+        private void HandleOnNotification(string message)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)delegate ()
+                {
+                    RenderNotificationPopup("New notification", message);
+                });
+            }
+            else
+            {
+                RenderNotificationPopup("New notification", message);
+            }
+        }
 
         void HandleOnClickSendButton(string tinnhan)
         {
@@ -272,7 +298,7 @@ namespace Server
             //nếu đề thi không có phần tử nào thì không có gì xảy ra
             if (lsvDeThi.Items.Count == 0)
 			{
-                MessageBox.Show("Vui long chon de thi");
+                MessageBox.Show("Choose file...");
                 return;
 			}                
 
@@ -282,13 +308,13 @@ namespace Server
             //xử lý hàm thông báo nếu đường dẫn của bài Client không hợp lệ
             if (string.IsNullOrWhiteSpace(clientPath))
 			{
-                MessageBox.Show("Vui long nhap duong dan phat bai thi hop le");
+                MessageBox.Show("Choose Client path to save");
                 return;
 			}
             //xử lý hàm thông báo nếu đường dẫn của bài Server không hợp lệ
             if (string.IsNullOrWhiteSpace(serverPath))
 			{
-                MessageBox.Show("Vui long nhap duong dan luu bai hop le");
+                MessageBox.Show("Choose valid path");
                 return;
 			}
             //đưa path của file bài thi hiện vào listOfDeThiURL
@@ -381,18 +407,26 @@ namespace Server
             int second = counter % 60;
 
             lblTimeLeft.Text = minute + ":" + second;
-
             if (counter == 0)
             {
                 countdown.Stop();
 
-                AddMessage("Server: Đã hết thời gian làm bài");
+                serverProgram.GuiTinNhanChoTatCaMayCon("Time up");
             }
         }
 
         private void cmdKichHoatAllClient_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLock_Click(object sender, EventArgs e)
+        {
+            FrmLocking frm = new FrmLocking();
+            frm.ShowDialog();
+
+            List<string> selectedPrograms = frm.selectedPrograms;
+            serverProgram.CamChuongTrinh(selectedPrograms);
         }
     }
 }
